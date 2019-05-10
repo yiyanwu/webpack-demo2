@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.2cce8147.chunk.css",
-    "main.js": "/static/js/main.d964dbbd.chunk.js",
-    "main.js.map": "/static/js/main.d964dbbd.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.b41502e9.chunk.js": "/static/js/2.b41502e9.chunk.js",
-    "static/js/2.b41502e9.chunk.js.map": "/static/js/2.b41502e9.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.82616742829c15b337f47ad9637a5731.js": "/precache-manifest.82616742829c15b337f47ad9637a5731.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.2cce8147.chunk.css.map": "/static/css/main.2cce8147.chunk.css.map",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/webpack-demo2/static/css/main.2cce8147.chunk.css",
+    "main.js": "/webpack-demo2/static/js/main.9a55ca50.chunk.js",
+    "main.js.map": "/webpack-demo2/static/js/main.9a55ca50.chunk.js.map",
+    "runtime~main.js": "/webpack-demo2/static/js/runtime~main.0a0adbd1.js",
+    "runtime~main.js.map": "/webpack-demo2/static/js/runtime~main.0a0adbd1.js.map",
+    "static/js/2.b41502e9.chunk.js": "/webpack-demo2/static/js/2.b41502e9.chunk.js",
+    "static/js/2.b41502e9.chunk.js.map": "/webpack-demo2/static/js/2.b41502e9.chunk.js.map",
+    "index.html": "/webpack-demo2/index.html",
+    "precache-manifest.a9d2452c2faec803ea7d7150b11fa130.js": "/webpack-demo2/precache-manifest.a9d2452c2faec803ea7d7150b11fa130.js",
+    "service-worker.js": "/webpack-demo2/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/webpack-demo2/static/css/main.2cce8147.chunk.css.map",
+    "static/media/logo.svg": "/webpack-demo2/static/media/logo.5d5d9eef.svg"
   }
 }
