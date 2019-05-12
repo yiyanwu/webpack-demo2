@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
+import './reset.css'
 
-class App extends Component {
+export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      newTodo:'test',
+      newTodo:'',
       todolist:[
         {id:1,title:'第一個待辦'},
         {id:2,title:'第二個待辦'}
