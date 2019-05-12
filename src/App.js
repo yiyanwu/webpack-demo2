@@ -9,36 +9,72 @@ export default class App extends Component {
     super(props)
     this.state = {
       newTodo:'',
-      todolist:[
-        {id:1,title:'第一個待辦'},
-        {id:2,title:'第二個待辦'}
-      ]
+      todolist:[]
     }
   }
   
   render(){
     let todos = this.state.todolist.map((item,index)=>{
       return (
-        <li>
-          <TodoItem todo={item} />
+        <li key={index}>
+          <TodoItem todo={item} 
+          onFinish={this.finish.bind(this)}
+          onDelete={this.delete.bind(this)}
+          />
         </li>
       )
     })
-
+    
     return(
       <div className="App">
         <h1>我的待办</h1>
         <div className="InputWrapper">
-          <TodoInput content={this.state.newTodo} onSubmit={this.addTodo}/>
+          <TodoInput content={this.state.newTodo} 
+          onSubmit={this.addTodo.bind(this)}
+          onChange={this.changeTitle.bind(this)}
+          />
         </div>
         <ol>{todos}</ol>
       </div>
     )
   }
 
-  addTodo(){
-    console.log('添加一个todolist')
+  finish(e,todo){
+    todo.status = todo.status === 'completed' ? '': 'completed'
+    this.setState(this.state)
   }
+
+  delete(e,todo){
+    todo.deleted = true
+    this.setState(this.state)
+  }
+
+  changeTitle(e){
+     this.setState({
+       newTodo:e.target.value,
+       todolist:this.state.todolist
+     })
+  }
+
+  addTodo(e){
+    this.state.todolist.push({
+      id:idMaker(),
+      title:e.target.value,
+      status:null,
+      deleted:false
+    })
+    this.setState({
+      newTodo:'',
+      todolist:this.state.todolist
+    })
+  }
+  
 }
+
+let id = 0
+function idMaker(){
+    id += 1
+    return id
+  }
 
 
