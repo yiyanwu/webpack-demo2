@@ -3,13 +3,14 @@ import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import './reset.css'
+import * as localStorage from './localStorage'
 
 export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       newTodo:'',
-      todolist:[]
+      todolist:localStorage.load('todolist') || []
     }
   }
   
@@ -43,11 +44,13 @@ export default class App extends Component {
   finish(e,todo){
     todo.status = todo.status === 'completed' ? '': 'completed'
     this.setState(this.state)
+    localStorage.save('todolist',this.state.todolist)
   }
 
   delete(e,todo){
     todo.deleted = true
     this.setState(this.state)
+    localStorage.save('todolist',this.state.todolist)
   }
 
   changeTitle(e){
@@ -55,6 +58,7 @@ export default class App extends Component {
        newTodo:e.target.value,
        todolist:this.state.todolist
      })
+     localStorage.save('todolist',this.state.todolist)
   }
 
   addTodo(e){
@@ -68,6 +72,7 @@ export default class App extends Component {
       newTodo:'',
       todolist:this.state.todolist
     })
+    localStorage.save('todolist',this.state.todolist)
   }
   
 }
