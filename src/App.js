@@ -35,7 +35,7 @@ export default class App extends Component {
           onChange={this.changeTitle.bind(this)}
           />
         </div>
-        <ol>{todos}</ol>
+        <ol className="todoList">{todos}</ol>
       </div>
     )
   }
