@@ -41,16 +41,18 @@ export default class App extends Component {
     )
   }
 
+  componentDidUpdate(){
+    localStorage.save('todoList', this.state.todoList)
+  }
+
   finish(e,todo){
     todo.status = todo.status === 'completed' ? '': 'completed'
     this.setState(this.state)
-    localStorage.save('todolist',this.state.todolist)
   }
 
   delete(e,todo){
     todo.deleted = true
     this.setState(this.state)
-    localStorage.save('todolist',this.state.todolist)
   }
 
   changeTitle(e){
@@ -58,7 +60,6 @@ export default class App extends Component {
        newTodo:e.target.value,
        todolist:this.state.todolist
      })
-     localStorage.save('todolist',this.state.todolist)
   }
 
   addTodo(e){
@@ -72,7 +73,6 @@ export default class App extends Component {
       newTodo:'',
       todolist:this.state.todolist
     })
-    localStorage.save('todolist',this.state.todolist)
   }
   
 }
