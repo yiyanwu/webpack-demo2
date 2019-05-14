@@ -12,6 +12,7 @@ export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
+      user:{},
       newTodo:'',
       todolist:[]
     }
@@ -32,7 +33,7 @@ export default class App extends Component {
     
     return(
       <div className="App">
-        <h1>我的待办</h1>
+        <h1>{this.state.user.username || '我'}的待办</h1>
         <div className="InputWrapper">
           <TodoInput content={this.state.newTodo} 
           onSubmit={this.addTodo.bind(this)}
@@ -40,14 +41,18 @@ export default class App extends Component {
           />
         </div>
         <ol className="todoList">{todos}</ol>
-        <UserDialog />
+        <UserDialog onSignUp={this.onSignUp.bind(this)}/>
       </div>
     )
   }
 
-  componentDidUpdate(){
-    
+  onSignUp(user){
+    let stateCopy = JSON.parse(JSON.stringify(this.state)) 
+    stateCopy.user = user
+    this.setState(this.state)
   }
+
+  componentDidUpdate(){}
 
   finish(e,todo){
     todo.status = todo.status === 'completed' ? '': 'completed'
