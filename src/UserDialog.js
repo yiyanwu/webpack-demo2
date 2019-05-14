@@ -19,17 +19,13 @@ export default class UserDialog extends Component {
     }   
     signUp(e){}
     signIn(e){} 
-    changeUsername(e){
+    changeFormData(e,key){
         //直接写this.state.formData.username会报错
-        let statecopy = JSON.parse(JSON.stringify(this.state))
-        statecopy.formData.username = e.target.value
+        let statecopy = JSON.parse(JSON.stringify(this.state))// 用 JSON 深拷贝
+        statecopy.formData[key] = e.target.value
         this.setState(statecopy)
     }
-    changePassword(e){
-        let statecopy = JSON.parse(JSON.stringify(this.state))
-        statecopy.formData.password = e.target.value
-        this.setState(statecopy)
-    }
+    
 
     render(){
         let signUpForm = (
@@ -37,13 +33,14 @@ export default class UserDialog extends Component {
               <div className="row">
                 <label>用户名</label> 
                 <input type="text" value={this.state.formData.username}
-                 onChange={this.changeUsername.bind(this)}
+                 onChange={this.changeFormData.bind(this,'username')}
+                 /* bind 不仅可以绑定 this，还可以绑定第一个参数 */
                 />
               </div>
               <div className="row">
                 <label>密码</label>
                 <input type="password" value={this.state.formData.password}
-                 onChange={this.changePassword.bind(this)}
+                 onChange={this.changePassword.bind(this,'password')}
                 />
               </div>
               <div className="row actions">
@@ -56,13 +53,13 @@ export default class UserDialog extends Component {
             <div className="row">
               <label>用户名</label>
               <input type="text" value={this.state.formData.username}
-               onChange={this.changeUsername.bind(this)}
+               onChange={this.changeUsername.bind(this,'username')}
               />
             </div>
             <div className="row">
               <label>密码</label>
               <input type="password" value={this.state.formData.password}
-               onChange={this.changePassword.bind(this)}
+               onChange={this.changePassword.bind(this,'password')}
               />
             </div>
             <div className="row actions">
