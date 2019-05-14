@@ -3,14 +3,16 @@ import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import './reset.css'
-import * as localStorage from './localStorage'
+
+
+
 
 export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       newTodo:'',
-      todolist:localStorage.load('todolist') || []
+      todolist:[]
     }
   }
   
@@ -42,7 +44,7 @@ export default class App extends Component {
   }
 
   componentDidUpdate(){
-    localStorage.save('todoList', this.state.todoList)
+    
   }
 
   finish(e,todo){
