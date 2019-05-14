@@ -23,6 +23,14 @@ export function signUp(username,password,successfn,errorfn){
   return undefined
 }
 
+export function getCurrentUser(){
+  let user = AV.User.current()
+  if(user){
+    return getUserFromAVUser(user)
+  }else{
+    return null
+  }
+}
 
 function getUserFromAVUser(AVUser){ //这函数是为了拿到注册时候的user
   return {
