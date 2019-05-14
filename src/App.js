@@ -41,7 +41,7 @@ export default class App extends Component {
           />
         </div>
         <ol className="todoList">{todos}</ol>
-        <UserDialog onSignUp={this.onSignUp.bind(this)}/>
+        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)}/>}
       </div>
     )
   }
@@ -49,7 +49,7 @@ export default class App extends Component {
   onSignUp(user){
     let stateCopy = JSON.parse(JSON.stringify(this.state)) 
     stateCopy.user = user
-    this.setState(this.state)
+    this.setState(stateCopy)
   }
 
   componentDidUpdate(){}
