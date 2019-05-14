@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import './App.css';
+import './reset.css'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import './reset.css'
+import UserDialog from './UserDialog'
 
 
 
@@ -39,6 +40,7 @@ export default class App extends Component {
           />
         </div>
         <ol className="todoList">{todos}</ol>
+        <UserDialog />
       </div>
     )
   }
