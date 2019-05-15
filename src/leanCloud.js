@@ -32,6 +32,11 @@ export function getCurrentUser(){
   }
 }
 
+export function signOut(){
+  AV.User.logOut()
+  return undefined
+}
+
 function getUserFromAVUser(AVUser){ //这函数是为了拿到注册时候的user
   return {
     id:AVUser.id,
