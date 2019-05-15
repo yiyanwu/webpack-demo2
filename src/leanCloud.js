@@ -9,18 +9,27 @@ AV.init({
 
 export default AV
 
-export function signUp(username,password,successfn,errorfn){
+export function signUp(username,password,successFn,errorFn){
   var user = new AV.User() //新建 AVUser 对象实例
   user.setUsername(username) //设置用户名
   user.setPassword(password) //设置密码
   user.signUp().then(function(loginedUser) {
     let user = getUserFromAVUser(loginedUser) //调用获取user信息的函数
-    successfn.call(null,user)
+    successFn.call(null,user)
   },function(error) {
-    errorfn.call(null,error)
+    errorFn.call(null,error)
   })
 
   return undefined
+}
+
+export function signIn(username,password,successFn,errorFn){
+  AV.User.logIn(username,password).then(function(loginedUser){
+    let user = getUserFromAVUser(loginedUser)
+    successFn.call(null,user)
+  },function(error){
+    errorFn.call(null,error)
+  })
 }
 
 export function getCurrentUser(){
