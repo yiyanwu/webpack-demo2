@@ -9,10 +9,12 @@ AV.init({
 
 export default AV
 
-export function signUp(username,password,successFn,errorFn){
+export function signUp(email,username,password,successFn,errorFn){
   var user = new AV.User() //新建 AVUser 对象实例
   user.setUsername(username) //设置用户名
   user.setPassword(password) //设置密码
+  user.setEmail(email) //设置邮箱
+  
   user.signUp().then(function(loginedUser) {
     let user = getUserFromAVUser(loginedUser) //调用获取user信息的函数
     successFn.call(null,user)

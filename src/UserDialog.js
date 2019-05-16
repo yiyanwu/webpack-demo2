@@ -9,6 +9,7 @@ export default class UserDialog extends Component {
         this.state = {
           selected: 'signUp',
           formData:{
+              email:'',
               username:'',
               password:''
           }
@@ -21,7 +22,7 @@ export default class UserDialog extends Component {
     }   
     signUp(e){
         e.preventDefault()
-        let {username,password} = this.state.formData
+        let {email,username,password} = this.state.formData
         let success = (user)=>{
            this.props.onSignUp.call(null,user)
         }
@@ -29,6 +30,9 @@ export default class UserDialog extends Component {
             switch(error.code){
               case 202:
               alert('用户名已经被占用')
+              break
+              case 203:
+              alert('邮箱已被占用')
               break
               case 200:
               alert('用户名不能为空')
@@ -41,7 +45,7 @@ export default class UserDialog extends Component {
               break
             }
         }
-        signUp(username,password,success,error)
+        signUp(email,username,password,success,error)
     }
     signIn(e){
       e.preventDefault()
@@ -82,6 +86,12 @@ export default class UserDialog extends Component {
         let signUpForm = (
             <form className="signUp" onSubmit={this.signUp.bind(this)}> {/* 注册*/}
               <div className="row">
+                <label>邮箱</label>
+                <input type="text" value={this.state.formData.email}
+                 onChange={this.changeFormData.bind(this,'email')}
+                />
+              </div>
+              <div className="row">
                 <label>用户名</label> 
                 <input type="text" value={this.state.formData.username}
                  onChange={this.changeFormData.bind(this,'username')}
@@ -115,6 +125,7 @@ export default class UserDialog extends Component {
             </div>
             <div className="row actions">
               <button type="submit">登录</button>
+              <a href="javascript:;">忘记密码了？</a>
             </div>
           </form>
         )
