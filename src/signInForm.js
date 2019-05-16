@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class SignUpForm extends Component{
+export default class SignInForm extends Component{
     render(){
         return(
             <form className="signIn" onSubmit={this.props.onSubmit.bind(this)}> {/* 登录*/}
