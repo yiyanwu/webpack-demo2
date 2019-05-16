@@ -14,7 +14,7 @@ export function signUp(email,username,password,successFn,errorFn){
   user.setUsername(username) //设置用户名
   user.setPassword(password) //设置密码
   user.setEmail(email) //设置邮箱
-  
+
   user.signUp().then(function(loginedUser) {
     let user = getUserFromAVUser(loginedUser) //调用获取user信息的函数
     successFn.call(null,user)
@@ -46,6 +46,13 @@ export function getCurrentUser(){
 export function signOut(){
   AV.User.logOut()
   return undefined
+}
+export function sendPasswordResetEmail(email,successFn,errorFn){
+  AV.User.requestPasswordReset(email).then(function (success) {
+    successFn.call() 
+  }, function (error) {
+    console.dir(error)
+  })
 }
 
 function getUserFromAVUser(AVUser){ //这函数是为了拿到注册时候的user
