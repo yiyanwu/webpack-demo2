@@ -19,7 +19,7 @@ export default class App extends Component {
     if(user) {
       TodoModel.getByUser(user,(todos) => {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
-        stateCopy.todoList = todos
+        stateCopy.todolist = todos
         this.setState(stateCopy)
       })
     }
