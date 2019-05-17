@@ -15,7 +15,9 @@ export default class TodoInput extends Component {
     }
     submit(e){
         if(e.key === 'Enter'){
-            this.props.onSubmit(e)
+            if(e.target.value.trim() !== ''){
+                this.props.onSubmit(e)
+            }
         }
     }
 }
