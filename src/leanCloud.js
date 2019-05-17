@@ -11,12 +11,29 @@ export default AV
 
 // 所有跟 Todo 相关的 LeanCloud 操作都放到这里
 export const TodoModel = {
+  getByUser(user,successFn,errorFn){
+    let query = new AV.Query('Todo')//文档批量处理
+    query.find().then((response) => {
+      let array = response.map((t) => {
+        return {id: t.id, ...t.attributes}
+      })
+      successFn.call(null, array)
+    }, (error) => {
+      errorFn && errorFn.call(null, error)
+    })
+  },
   create({status,title,deleted},successFn,errorFn){
-    let Todo = AV.Object.extend('Todo') 
+    let Todo = AV.Object.extend('Todo') //文档保存对象
     let todo = new Todo()
     todo.set('title', title)
     todo.set('status', status)
     todo.set('deleted', deleted)
+    //单用户权限设置，该todo只能被当前用户看到
+    let acl = new AV.ACL()
+    acl.setPublicReadAccess(false) // 注意这里是 false
+    acl.setWriteAccess(AV.User.current(), true)
+    todo.setACL(acl);
+
     todo.save().then(function(response) {
       successFn.call(null,response.id)
     },function (error) {
