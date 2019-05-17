@@ -75,13 +75,21 @@ export default class App extends Component {
   componentDidUpdate(){}
 
   finish(e,todo){
+    let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '': 'completed'
-    this.setState(this.state)
+    TodoModel.update(todo,() => {
+      this.setState(this.state)
+    },(error) => {
+      todo.statue = oldStatus
+      this.setState(this.state)
+    })
   }
 
   delete(e,todo){
-    todo.deleted = true
-    this.setState(this.state)
+    TodoModel.destroy(todo.id,() => {
+      todo.deleted = true
+      this.setState(this.state)
+    })
   }
 
   changeTitle(e){
@@ -94,7 +102,7 @@ export default class App extends Component {
   addTodo(e){
     let newTodo={
       title:e.target.value,
-      status:null,
+      status:'',
       deleted:false
     }
     TodoModel.create(newTodo,(id) => {
