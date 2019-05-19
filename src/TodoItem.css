@@ -6,4 +6,15 @@
   .TodoItem>.title{
     flex-grow: 1;
     padding: 0 .5em;
+    font-family:  "Microsoft YaHei";
+  }
+  .TodoItem > input[type="checkbox"] {
+    outline:none; 
+    box-sizing: border-box;
+    height: 1em;
+    border-radius: 50%;
+    background: #6bb100;
+  }
+  .TodoItem > button {
+    border-radius: 4px;
   }

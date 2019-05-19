@@ -5,6 +5,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 import {getCurrentUser,signOut,TodoModel} from './leanCloud'
+import Time from './time'
 
 
 export default class App extends Component {
@@ -40,6 +41,7 @@ export default class App extends Component {
     
     return(
       <div className="App">
+        <Time/>
         <h1>{this.state.user.username || '我'}的待办
           {this.state.user.id ? <button onClick={this.signOut.bind(this) }>登出</button> : null}
         </h1>

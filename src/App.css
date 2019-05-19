@@ -10,9 +10,21 @@
   min-width: 30em;
   min-height: 25em;
 }
+.App > h1 {
+  margin-bottom: 1em;
+  color: #ead7d7;
+  font-family: "Microsoft YaHei";
+}
 .App > .todoList> li:nth-child(odd){
   background: #eee;
 }
 .App > .todoList> li:nth-child(even){
   background: transparent;
+}
+.App > h1 > button {
+  border: 1px solid #ead7d7;
+  margin-left: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #ead7d7;
 }
