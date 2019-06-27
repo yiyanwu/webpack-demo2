@@ -5,23 +5,27 @@
   margin: 10px;
   padding: 0 5px;
   border-radius: 5px;
-  box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
+  box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.15);
   background: white;
   min-width: 30em;
   min-height: 25em;
 }
-.App > h1 {
+
+.App>h1 {
   margin-bottom: 1em;
   color: #ead7d7;
   font-family: "Microsoft YaHei";
 }
-.App > .todoList> li:nth-child(odd){
-  background: #eee;
+
+.App>.todoList>li:nth-child(odd) {
+  background: #5DADE2;
 }
-.App > .todoList> li:nth-child(even){
-  background: transparent;
+
+.App>.todoList>li:nth-child(even) {
+  background: #AED6F1;
 }
-.App > h1 > button {
+
+.App> h1> button {
   border: 1px solid #ead7d7;
   margin-left: 3px;
   border-radius: 4px;
