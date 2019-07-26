@@ -9,7 +9,7 @@ export default class TodoItem extends Component {
            checked={this.props.todo.status === 'completed'}
            onChange={this.finish.bind(this)}/>
            <span className="title">{this.props.todo.title}</span>
-           <button onClick={this.delete.bind(this)}>删除</button>
+           <button onClick={this.delete.bind(this)}>完成</button>
          </div>
         )
     }
